@@ -1,0 +1,14 @@
+allure-pytest==2.15.0
+allure-python-commons==2.15.0
+attrs==25.3.0
+certifi==2025.8.3
+colorama==0.4.6
+iniconfig==2.1.0
+packaging==25.0
+pluggy==1.6.0
+pydantic==2.11.7
+pydantic_core==2.33.2
+pytest==8.4.1
+selenium==4.35.0
+typing_extensions==4.14.1
+urllib3==2.5.0
