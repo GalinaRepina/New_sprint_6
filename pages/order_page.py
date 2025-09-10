@@ -1,28 +1,29 @@
 import allure
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
+from config.urls import app_config
 
 class OrderPage(BasePage):
 
-    @allure.step('Заполнение поля Имя: {text}')
+    @allure.step('Заполнение поле Имя: {text}')
     def send_name_to_name_field(self, text):
         self.send_keys_to_field(OrderPageLocators.name_field, text)
 
-    @allure.step('Заполнение поля Фамилия: {text}')
+    @allure.step('Заполнение поле Фамилия: {text}')
     def send_last_name_to_last_name_field(self, text):
         self.send_keys_to_field(OrderPageLocators.last_name_field, text)
 
-    @allure.step('Заполнение поля Адрес: {text}')
+    @allure.step('Заполнение поле Адрес: {text}')
     def send_address_to_address_field(self, text):
         self.send_keys_to_field(OrderPageLocators.address_field, text)
 
-    @allure.step('Заполнение поля Станция метро: {text}')
+    @allure.step('Заполнение поле Станция метро: {text}')
     def send_metro_station_to_metro_station_field(self, text):
         self.click_button(OrderPageLocators.metro_station_field)
         self.send_keys_to_field(OrderPageLocators.metro_station_field, text)
         self.click_button(OrderPageLocators.metro)
 
-    @allure.step('Заполнение поля Телефон: {text}')
+    @allure.step('Заполнение поле Телефон: {text}')
     def send_telephone_number_to_telephone_number_field(self, text):
         self.send_keys_to_field(OrderPageLocators.telephone_field, text)
 
@@ -30,7 +31,7 @@ class OrderPage(BasePage):
     def click_on_the_next_button(self):
         self.click_button(OrderPageLocators.next_button)
 
-    @allure.step('Заполнение поля Когда привезти заказ: {text}')
+    @allure.step('Заполнение поле Когда привезти заказ: {text}')
     def send_deliver_to_deliver_order_field(self, text):
         self.click_button(OrderPageLocators.deliver_order_field)
         self.send_keys_to_field(OrderPageLocators.deliver_order_field, text)
@@ -44,7 +45,7 @@ class OrderPage(BasePage):
     def select_color_scooter(self):
         self.click_button(OrderPageLocators.black_color_scooter_check)
 
-    @allure.step('Заполнение поля Комментарий: {text}')
+    @allure.step('Заполнение поле Комментарий: {text}')
     def send_comment_to_comment_field(self, text):
         self.send_keys_to_field(OrderPageLocators.comment_field, text)
 

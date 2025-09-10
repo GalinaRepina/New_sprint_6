@@ -19,29 +19,6 @@ class TestUsers:
         'comment': 'Позвонить за 15 минут'
     }
 
-
-class AppConfig: #Централизованное управление URL через класс с properties
-    BASE_DOMAIN = 'qa-scooter.praktikum-services.ru'
-    PROTOCOL = 'https'
-    DZEN_URL = 'https://dzen.ru/?yredirect=true'
-    
-    @property
-    def base_url(self):
-        return f'{self.PROTOCOL}://{self.BASE_DOMAIN}'
-    
-    @property
-    def main_page(self):
-        return f'{self.base_url}/'
-    
-    @property
-    def order_page(self):
-        return f'{self.base_url}/order'
-    
-    @property
-    def order_status_page(self):
-        return f'{self.base_url}/track'
-
-
 class FAQData:
     EXPECTED_ANSWERS = [
         'Сутки — 400 рублей. Оплата курьеру — наличными или картой.',
@@ -53,7 +30,3 @@ class FAQData:
         'Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.',
         'Да, обязательно. Всем самокатов! И Москве, и Московской области.'
     ]
-
-
-# Создаем экземпляр конфигурации
-app_config = AppConfig()

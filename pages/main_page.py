@@ -1,6 +1,5 @@
 import allure
 from locators.home_page_locators import HomePageHeaderLocators, HomePageLocators
-from locators.dzen_page_locators import DzenPageLocators
 from pages.base_page import BasePage
 
 class HomePageHeader(BasePage):
@@ -37,7 +36,15 @@ class HomePageHeader(BasePage):
 
     @allure.step('Проверка отображения надписи - "Учебный проект"')
     def check_order_title(self):
-        return self.find_and_wait_locator(HomePageHeaderLocators.header_page_title).is_displayed()
+        return self.check_element(HomePageHeaderLocators.header_page_title)
+
+    @allure.step('Клик по логотипу Яндекс и переход на Dzen')
+    def click_yandex_logo_and_go_to_dzen(self):
+        original_tab_count = self.get_window_handles_count()
+        self.yandex_logo_click()
+        self.wait_for_new_tab(original_tab_count)
+        self.switch_to_last_tab()
+        self.wait_for_domain_in_url('dzen.ru')
 
 
 class HomePage(BasePage):

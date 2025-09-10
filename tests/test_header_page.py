@@ -1,9 +1,9 @@
 import allure
 import pytest
-from selenium.webdriver.support.ui import WebDriverWait
-from helps.data import FAQData, app_config
+from config.urls import app_config
 from locators.home_page_locators import HomePageLocators
 from pages.main_page import HomePage, HomePageHeader
+from helps.data import FAQData
 
 class TestMainPage:
 
@@ -30,26 +30,9 @@ class TestMainPage:
         home_page = HomePage(driver)
         home_page.accept_cookie_home_page()
         
-        # Запоминаем текущее количество вкладок
-        original_windows = driver.window_handles
+        header_page.click_yandex_logo_and_go_to_dzen()
         
-        header_page.yandex_logo_click()
-        
-        # Ждем открытия новой вкладки
-        WebDriverWait(driver, 10).until(
-            lambda d: len(d.window_handles) > len(original_windows)
-        )
-        
-        # Переключаемся на новую вкладку
-        driver.switch_to.window(driver.window_handles[-1])
-        
-        # Ждем загрузки страницы и редиректа на dzen
-        WebDriverWait(driver, 15).until(
-            lambda d: 'dzen.ru' in d.current_url or 'yandex.ru' in d.current_url
-        )
-        
-        current_url = driver.current_url
-        # Проверяем что мы на домене dzen.ru или прошли через yandex аутентификацию
+        current_url = header_page.get_current_url()
         assert 'dzen.ru' in current_url or 'yandex.ru' in current_url
 
     @allure.title('Тест проверки текста ответов на вопросы')

@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from helps.data import app_config
+from config.urls import app_config
 
 @pytest.fixture
 def driver():
